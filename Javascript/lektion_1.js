@@ -76,30 +76,30 @@ countClick()
 // har indtastet mere end 8 bogstaver. Hvis ikke brugeren har indtastet mere en 8 bogstaver skal der vises en fejl besked
 // under input feltet, der beder brugeren om at indtaste mindst 8 bogstaver.
 
-function validateThis() {
-    let thisDiv = document.querySelector("#validText");
-    let inputField = document.createElement('input')
-    inputField.type = 'text';
-    inputField.placeholder = 'write here';
+// function validateThis() {
+//     let thisDiv = document.querySelector("#validText");
+//     let inputField = document.createElement('input')
+//     inputField.type = 'text';
+//     inputField.placeholder = 'write here';
 
-    let validateBtn = document.createElement('button');
-    validateBtn.innerText = 'GO!'
-    let validateRes = document.createElement('p');
+//     let validateBtn = document.createElement('button');
+//     validateBtn.innerText = 'GO!'
+//     let validateRes = document.createElement('p');
 
-    validateBtn.addEventListener('click', () => {
-        let userInput = inputField.value.trim();
-        if (userInput.length < 8) {
-            validateRes.innerText = 'vi skal have mere end 8 bogstaver!!';
-        } else {
-            validateRes.innerText = 'fint!!'
-        }
-    })
+//     validateBtn.addEventListener('click', () => {
+//         let userInput = inputField.value.trim();
+//         if (userInput.length < 8) {
+//             validateRes.innerText = 'vi skal have mere end 8 bogstaver!!';
+//         } else {
+//             validateRes.innerText = 'fint!!'
+//         }
+//     })
 
-    thisDiv.appendChild(inputField)
-    thisDiv.appendChild(validateBtn)
-    thisDiv.appendChild(validateRes)
-}
-validateThis()
+//     thisDiv.appendChild(inputField)
+//     thisDiv.appendChild(validateBtn)
+//     thisDiv.appendChild(validateRes)
+// }
+// validateThis()
 
 //_________________________________________________________________________________
 
@@ -108,8 +108,8 @@ validateThis()
 // måle om brugeren fører musen ind over hver af de fire firkanter. Når musen rammer en firkant skal den skifte farve til en
 // tilfældigt genereret farve.
 function squareColor() {
-    
-    
+
+
     let squareSection = document.querySelector('#squareSection');
     let squareOne = document.createElement('div')
     squareOne.classList.add('square', 'color1');
@@ -164,4 +164,38 @@ squareColor()
 //  - Brugeren skal indtaste et stort bogstav.
 //  - Brugeren skal indtaste et tegn som ikke er et bogstav.
 //  - Brugeren må ikke indtaste en string som er længere end 20 karakterer.
+
+function validateThis() {
+    let thisDiv = document.querySelector("#validText");
+    let inputField = document.createElement('input')
+    inputField.type = 'text';
+    inputField.placeholder = 'write here';
+
+    let validateBtn = document.createElement('button');
+    validateBtn.innerText = 'GO!'
+    let validateRes = document.createElement('p');
+
+    validateBtn.addEventListener('click', () => {
+        let userInput = inputField.value.trim();
+        let hasCapitalLetter = /[A-Z]/.test(userInput);
+        let hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(userInput);
+
+        if (userInput.length < 8) {
+            validateRes.innerText = 'vi skal have mere end 8 bogstaver!!';
+        } else if (userInput.length > 20) {
+            validateRes.innerText = 'max 20 bogstaver!!';
+        } else if (!hasCapitalLetter) {
+            validateRes.innerText = 'mindst 1 stort bogstav!!';
+        } else if (!hasSpecialCharacter) {
+            validateRes.innerText = 'mindst 1 specialtegn!!';
+        } else {
+            validateRes.innerText = 'fint!!';
+        }
+    });
+
+    thisDiv.appendChild(inputField)
+    thisDiv.appendChild(validateBtn)
+    thisDiv.appendChild(validateRes)
+}
+validateThis()
 //_________________________________________________________________________________
