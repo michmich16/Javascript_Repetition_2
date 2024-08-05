@@ -87,13 +87,13 @@ function validateThis() {
     let validateRes = document.createElement('p');
 
     validateBtn.addEventListener('click', () => {
-            let userInput = inputField.value.trim();
-            if (userInput.length < 8) {
-                validateRes.innerText = 'vi skal have mere end 8 bogstaver!!';
-            }else{
-                validateRes.innerText = 'fint!!'
-            }
-        })
+        let userInput = inputField.value.trim();
+        if (userInput.length < 8) {
+            validateRes.innerText = 'vi skal have mere end 8 bogstaver!!';
+        } else {
+            validateRes.innerText = 'fint!!'
+        }
+    })
 
     thisDiv.appendChild(inputField)
     thisDiv.appendChild(validateBtn)
@@ -107,6 +107,56 @@ validateThis()
 // I denne opgave skal du indele en side i fire lige store firkanter. Du skal herefter bruge en eventlistener til at
 // måle om brugeren fører musen ind over hver af de fire firkanter. Når musen rammer en firkant skal den skifte farve til en
 // tilfældigt genereret farve.
+function squareColor() {
+    
+    
+    let squareSection = document.querySelector('#squareSection');
+    let squareOne = document.createElement('div')
+    squareOne.classList.add('square', 'color1');
+    let squareTwo = document.createElement('div')
+    squareTwo.classList.add('square', 'color2');
+    let squareThree = document.createElement('div')
+    squareThree.classList.add('square', 'color3');
+    let squareFour = document.createElement('div')
+    squareFour.classList.add('square', 'color4');
+
+    squareOne.addEventListener('mouseover', () => {
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        squareOne.style.backgroundColor = "#" + randomColor;
+    })
+    squareOne.addEventListener('mouseout', () => {
+        squareOne.style.backgroundColor = '';
+    });
+
+    squareTwo.addEventListener('mouseover', () => {
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        squareTwo.style.backgroundColor = "#" + randomColor;
+    })
+    squareTwo.addEventListener('mouseout', () => {
+        squareTwo.style.backgroundColor = '';
+    });
+
+    squareThree.addEventListener('mouseover', () => {
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        squareThree.style.backgroundColor = "#" + randomColor;
+    })
+    squareThree.addEventListener('mouseout', () => {
+        squareThree.style.backgroundColor = '';
+    });
+
+    squareFour.addEventListener('mouseover', () => {
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        squareFour.style.backgroundColor = "#" + randomColor;
+    })
+    squareFour.addEventListener('mouseout', () => {
+        squareFour.style.backgroundColor = '';
+    });
+    squareSection.appendChild(squareOne)
+    squareSection.appendChild(squareTwo)
+    squareSection.appendChild(squareThree)
+    squareSection.appendChild(squareFour)
+}
+squareColor()
 //_________________________________________________________________________________
 
 // Opgave 6
