@@ -177,16 +177,16 @@ function validateThis() {
 
     validateBtn.addEventListener('click', () => {
         let userInput = inputField.value.trim();
-        let hasCapitalLetter = /[A-Z]/.test(userInput);
-        let hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(userInput);
+        let capitalLetter = /[A-Z]/.test(userInput);
+        let specialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(userInput);
 
         if (userInput.length < 8) {
             validateRes.innerText = 'vi skal have mere end 8 bogstaver!!';
         } else if (userInput.length > 20) {
             validateRes.innerText = 'max 20 bogstaver!!';
-        } else if (!hasCapitalLetter) {
+        } else if (!capitalLetter) {
             validateRes.innerText = 'mindst 1 stort bogstav!!';
-        } else if (!hasSpecialCharacter) {
+        } else if (!specialCharacter) {
             validateRes.innerText = 'mindst 1 specialtegn!!';
         } else {
             validateRes.innerText = 'fint!!';
